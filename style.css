@@ -8,8 +8,8 @@
 
 :root {
   --text-color: white;
-  --bg-url: url("./assets/background_mobile_dark.png");
-  --stroke-color: rgba(255, 255, 255, 0.5);
+  --bg-color: black;
+  --bg-url: url("./assets/background-video.mp4");
   --surface-color: rgba(255, 255, 255, 0.1);
   --surface-color-hover: rgba(255, 255, 255, 0.02);
   --highlight-color: rgba(255, 255, 255, 0.1);
@@ -18,8 +18,7 @@
 
 .light {
   --text-color: black;
-  --bg-url: url("./assets/background_mobile_light.png");
-  --stroke-color: rgba(0, 0, 0, 0.5);
+  --bg-color: white;
   --surface-color: rgba(0, 0, 0, 0.1);
   --surface-color-hover: rgba(0, 0, 0, 0.02);
   --highlight-color: rgba(0, 0, 0, 0.1);
@@ -31,9 +30,25 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--bg-url) no-repeat top center/cover;
+  margin: auto;
+  background: var(--bg-color);
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
+}
+
+video {
+  position: absolute;
+  z-index: -1;
+  margin: 0;
+  opacity: 0.2;
+  object-fit: cover;
+  align-items: center;
+}
+
+.light video {
+  mix-blend-mode: difference;
+  opacity: 0.1;
 }
 
 #container {
@@ -47,7 +62,7 @@ body {
 
 #profile {
   text-align: center;
-  padding: 24px;
+  padding-bottom: 24px;
 }
 
 #profile img {
@@ -59,6 +74,8 @@ body {
 #profile a {
   display: block;
   text-decoration: none;
+  font-weight: 500;
+  padding-bottom: 16px;
 }
 
 /* switch */
@@ -104,11 +121,14 @@ body {
   height: 24px;
 
   background: var(--surface-color);
-  border: 1px solid var(--stroke-color);
   border-radius: 24px;
 
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
+}
+
+.light #switch span {
+  background-color: #33BBC5;
 }
 
 /* links */
@@ -135,10 +155,9 @@ ul li a {
   font-weight: 500;
 
   background: var(--surface-color);
-  border: 1px solid var(--stroke-color);
 
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 
   transition: background 0.2s;
 }
@@ -152,8 +171,6 @@ ul li a:hover {
 #social-links {
   display: flex;
   justify-content: center;
-
-  padding: 24px 0px;
 
   font-size: 24px;
 }
@@ -182,14 +199,14 @@ footer {
 
 /* media queries */
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   :root {
     --bg-url: url("./assets/bg-desktop-dark.jpg");
   }
   .light {
     --bg-url: url("./assets/bg-desktop-light.jpg");
   }
-}
+} */
 
 /* animation */
 
